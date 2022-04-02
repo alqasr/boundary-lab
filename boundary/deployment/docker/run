@@ -1,0 +1,33 @@
+#!/bin/bash
+
+function cleanup() {
+  pushd compose
+  docker-compose rm -fs 
+  popd
+  exit 0
+}
+trap cleanup SIGKILL SIGINT
+
+function init_compose() {
+  pushd compose/
+  docker-compose up -d
+  popd
+}
+
+for arg in "$@"
+do
+    case $arg in
+        all)
+        init_compose
+        shift
+        ;;
+        cleanup)
+        cleanup
+        shift
+        ;;
+        *)
+        echo "cmd not found: try 'all' or 'cleanup'"
+        shift
+        ;;
+    esac
+done
