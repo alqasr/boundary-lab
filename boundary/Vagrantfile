@@ -11,6 +11,6 @@ Vagrant.configure("2") do |config|
 
   config.vm.network "private_network", ip: "10.5.0.5"
 
-  config.vm.provision "shell", path: "../_common/setup.sh"
+  config.vm.provision "shell", path: "../common/setup.sh"
   config.vm.provision "shell", path: "setup.sh"
 end
