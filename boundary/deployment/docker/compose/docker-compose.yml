@@ -60,3 +60,11 @@ services:
     depends_on:
       boundary:
         condition: service_healthy
+
+  pac:
+    image: alqasr/pac
+    restart: unless-stopped
+    ports:
+      - 8080:8080
+    volumes:
+      - ../../../etc/alqasr/pac.yml:/etc/alqasr/pac.yml
