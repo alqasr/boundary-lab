@@ -14,7 +14,6 @@ apt-get install -y \
   unzip
   
 apt install -y \
-  redis-server \
   apache2 \
   squid
 
